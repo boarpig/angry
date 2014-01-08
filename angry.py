@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+from time import sleep
+
 # h = hereillä
 # k = kypärä
 # l = lintu
@@ -49,6 +51,8 @@ if __name__ == '__main__':
         for y in range(5):
             tabledict[(x, y)] = table[x][y]
 
+    pause = 0.5
+
     tables = []
     tables.append(tabledict)
     for first in rot(one):
@@ -61,7 +65,8 @@ if __name__ == '__main__':
                 except KeyError:
                     pass
                 if len(tabledict) == 20:
-                    #print_grid(lIST(TABLEdict.keys()), 0)
+                    sleep(pause)
+                    print_grid(list(tabledict.keys()), 0)
                     for second in rot(two):
                         for x_2 in range(5):
                             for y_2 in range(5):
@@ -72,7 +77,8 @@ if __name__ == '__main__':
                                 except KeyError:
                                     pass
                                 if len(tabledict) == 15:
-                                    #print_grid(list(tabledict.keys()), 2)
+                                    sleep(pause)
+                                    print_grid(list(tabledict.keys()), 0)
                                     for third in rot(three):
                                         for x_3 in range(5):
                                             for y_3 in range(5):
@@ -83,7 +89,8 @@ if __name__ == '__main__':
                                                 except KeyError:
                                                     pass
                                                 if len(tabledict) == 10:
-                                                    #print_grid(list(tabledict.keys()), 4)
+                                                    sleep(pause)
+                                                    print_grid(list(tabledict.keys()), 0)
                                                     for fourth in rot(four):
                                                         for x_4 in range(5):
                                                             for y_4 in range(5):
@@ -95,7 +102,9 @@ if __name__ == '__main__':
                                                                 except KeyError:
                                                                     error = True
                                                                 if len(tabledict) == 5:
-                                                                    print([x for x in tabledict.values() if x != " "])
+                                                                    sleep(pause)
+                                                                    print_grid(list(tabledict.keys()), 0)
+                                                                    #print(sorted([x for x in tabledict.values() if x != " "]))
                                                                 tabledict = dict(tables.pop())
                                                 tabledict = dict(tables.pop())
                                 tabledict = dict(tables.pop())
