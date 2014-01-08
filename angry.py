@@ -20,16 +20,16 @@ def rot(piece):
         n += 1
 
 
-def print_grid(coordlist):
-    initial = [[" ", " ", " ", " ", " "],
-               [" ", " ", " ", " ", " "],
-               [" ", " ", " ", " ", " "],
-               [" ", " ", " ", " ", " "],
-               [" ", " ", " ", " ", " "]]
+def print_grid(coordlist, indent=0):
+    initial = [["+", "+", "+", "+", "+"],
+               ["+", "+", "+", "+", "+"],
+               ["+", "+", "+", "+", "+"],
+               ["+", "+", "+", "+", "+"],
+               ["+", "+", "+", "+", "+"]]
     for coord in coordlist:
         initial[coord[0]][coord[1]] = "#"
     for row in initial:
-        print(''.join(row))
+        print(" " * indent,''.join(row))
     print("---")
 
 if __name__ == '__main__':
@@ -52,8 +52,8 @@ if __name__ == '__main__':
     tables = []
     tables.append(tabledict)
     for first in rot(one):
-        for x_1 in range(0, 4):
-            for y_1 in range(0, 4):
+        for x_1 in range(5):
+            for y_1 in range(5):
                 tables.append(dict(tabledict))
                 try:
                     for coord in first:
@@ -61,9 +61,10 @@ if __name__ == '__main__':
                 except KeyError:
                     pass
                 if len(tabledict) == 20:
+                    #print_grid(lIST(TABLEdict.keys()), 0)
                     for second in rot(two):
-                        for x_2 in range(0, 4):
-                            for y_2 in range(0, 4):
+                        for x_2 in range(5):
+                            for y_2 in range(5):
                                 tables.append(dict(tabledict))
                                 try:
                                     for coord in second:
@@ -71,9 +72,10 @@ if __name__ == '__main__':
                                 except KeyError:
                                     pass
                                 if len(tabledict) == 15:
+                                    #print_grid(list(tabledict.keys()), 2)
                                     for third in rot(three):
-                                        for x_3 in range(0, 4):
-                                            for y_3 in range(0, 4):
+                                        for x_3 in range(5):
+                                            for y_3 in range(5):
                                                 tables.append(dict(tabledict))
                                                 try:
                                                     for coord in third:
@@ -81,9 +83,10 @@ if __name__ == '__main__':
                                                 except KeyError:
                                                     pass
                                                 if len(tabledict) == 10:
+                                                    #print_grid(list(tabledict.keys()), 4)
                                                     for fourth in rot(four):
-                                                        for x_4 in range(0, 4):
-                                                            for y_4 in range(0, 4):
+                                                        for x_4 in range(5):
+                                                            for y_4 in range(5):
                                                                 tables.append(dict(tabledict))
                                                                 error = False
                                                                 try:
@@ -91,8 +94,8 @@ if __name__ == '__main__':
                                                                         del tabledict[(coord[0] + x_4, coord[1] + y_4)]
                                                                 except KeyError:
                                                                     error = True
-                                                                if not error:
-                                                                    print_grid(list(tabledict.keys()))
+                                                                if len(tabledict) == 5:
+                                                                    print([x for x in tabledict.values() if x != " "])
                                                                 tabledict = dict(tables.pop())
                                                 tabledict = dict(tables.pop())
                                 tabledict = dict(tables.pop())
