@@ -2,12 +2,12 @@
 
 from time import sleep
 
-# h = hereillä
-# k = kypärä
-# l = lintu
-# n = nukkuva
-# p = punasilmä
-# s = säikähtäny
+# h = hereillä / awake
+# k = kypärä / helmet
+# l = lintu / bird
+# n = nukkuva / sleeping
+# p = punasilmä / red eye
+# s = säikähtäny / startled
 
 def rot(piece):
     n = 0
